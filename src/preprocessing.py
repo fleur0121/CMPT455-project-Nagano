@@ -36,7 +36,7 @@ YEAR_SPECIFIC_COLUMNS = [
 def prepare_xy(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
     """Convert placeholders and numeric category codes; keep original rows."""
     X = df.drop(columns="income_class").copy()
-    for col in X.select_dtypes(include=["object", "str"]).columns:
+    for col in X.select_dtypes(include=["object", "string"]).columns:
         X[col] = X[col].str.strip().replace("?", np.nan)
     for col in NUMERIC_CODE_CATEGORIES:
         X[col] = X[col].astype(str)

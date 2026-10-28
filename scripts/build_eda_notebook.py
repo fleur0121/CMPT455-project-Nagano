@@ -56,7 +56,7 @@ display(df.head(3))
 """),
     code("""
 # Strip whitespace from string columns and treat only ? as missing.
-text_cols = df.select_dtypes(include=["object", "str"]).columns
+text_cols = df.select_dtypes(include=["object", "string"]).columns
 df[text_cols] = df[text_cols].apply(lambda s: s.str.strip())
 df[text_cols] = df[text_cols].replace("?", pd.NA)
 
@@ -66,6 +66,19 @@ missing = pd.DataFrame({
 }).sort_values("missing_count", ascending=False)
 display(missing[missing.missing_count > 0])
 """),
+    markdown("## Data quality: exact duplicates"),
+    code("""
+duplicate_count = int(df.duplicated().sum())
+duplicate_group_rows = int(df.duplicated(keep=False).sum())
+predictor_columns = [col for col in df.columns if col != "income_class"]
+conflicting_predictors = int((
+    df.groupby(predictor_columns, dropna=False)["income_class"].nunique() > 1
+).sum())
+print(f"Additional exact duplicate rows: {duplicate_count:,} ({duplicate_count / len(df):.2%})")
+print(f"Rows belonging to exact-duplicate groups: {duplicate_group_rows:,}")
+print(f"Predictor patterns with conflicting income labels: {conflicting_predictors:,}")
+"""),
+    markdown("""There are 16,078 duplicate lines (7.46%) that completely match other lines, excluding the first occurrence. However, there is no ID to identify individuals, so we cannot claim that these lines are duplicate records of the same person. Therefore, we did not eliminate the data for this reason. At the analysis phase, we will continuously pay attention to the possibility that lines with the same values appear in both the training and assessment data."""),
     markdown("## 2. Proportion of `Not in universe` values (check constant columns)"),
     code("""
 not_in_universe = pd.DataFrame({

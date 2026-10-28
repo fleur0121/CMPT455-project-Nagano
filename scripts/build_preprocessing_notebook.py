@@ -156,6 +156,17 @@ mi_ranking = pd.DataFrame({"feature": X_mi.columns, "MI_score": mi_scores})
 mi_ranking = mi_ranking.sort_values("MI_score", ascending=False).reset_index(drop=True)
 display(mi_ranking)
 """),
+    markdown("""We will choose the top 17 features from the 33 original features. There is a gap between the 17th (0.0104) and 18th (0.0053) features. To compare, we also keep all 33 features, and we will decide which feature set we are going to use at the analysis phase."""),
+    code("""
+candidate_k = 17
+full_33 = select_features(X_dev, include_migration=False).copy()
+candidate_features = mi_ranking.head(candidate_k)["feature"].tolist()
+candidate_17 = full_33.loc[:, candidate_features].copy()
+assert full_33.shape[1] == 33 and candidate_17.shape[1] == candidate_k
+print(f"Full feature set: {full_33.shape}")
+print(f"Top-{candidate_k} candidate feature set: {candidate_17.shape}")
+display(mi_ranking.head(candidate_k).assign(rank=range(1, candidate_k + 1))[["rank", "feature", "MI_score"]])
+"""),
     markdown("""
 ## 5. One-hot dimensionality and PCA
 
@@ -219,6 +230,7 @@ plt.show()
 - **Monetary values:** LR AP is 0.6048 with raw values versus 0.5927 with `log1p`. Keep raw values as the baseline; assess other classifiers separately.
 - **Class weights:** LR AP is 0.6048 without weighting versus 0.5975 with `balanced`. Use no weighting as the baseline, without assuming the result applies to other models.
 - **Dimensionality:** One-hot encoding yields 441 columns on the full training set and 440 on the 30,000-row sample. PCA needs 63 components for 90% explained variance. The survey-year bands are no longer visible after removing the two year-specific columns. Do not include PCA in the baseline pipeline.
+- **Feature selection:** We selected the top 17 features as a candidate set, but we also keep all 33 features to compare. We calculated MI only with the training dataset.
 
 All results are preliminary and training-only. In later CV, fit preprocessing within each training fold.
 """),
