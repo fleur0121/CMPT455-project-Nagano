@@ -8,3 +8,15 @@ Install the packages in `requirements.txt`, then open the notebooks from the rep
 - `notebooks/02_preprocessing.ipynb`: compares preprocessing options on training data only. It requires `src/data_loader.py` and `src/preprocessing.py`; `scripts/build_preprocessing_notebook.py` is the reproducible notebook source.
 
 The 02 notebook holds out 20% of the rows for later evaluation. It compares 33 versus 37 original features, raw versus `log1p` monetary values, and class weighting by five-fold CV on a 30,000-row training sample. It also reports mutual-information rankings and exploratory PCA. The held-out test set is not evaluated.
+
+## Classification comparison
+
+Run `notebooks/03_classification_comparison.ipynb` from top to bottom. It
+compares Random Forest and Gaussian Naive Bayes on the same stratified
+30,000-row training sample with five-fold cross-validation, then evaluates
+the selected settings once on the held-out test set. Keep the saved outputs.
+
+`notebooks/03_classification_comparison_ja.ipynb` is a Japanese study copy.
+The English notebook is the project copy. To regenerate both notebooks, run
+`python scripts/build_classification_notebook.py` from the project root, then
+run the notebooks again to restore their outputs.
