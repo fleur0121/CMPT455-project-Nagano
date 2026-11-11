@@ -11,6 +11,10 @@ The 02 notebook holds out 20% of the rows for later evaluation. It compares 33 v
 
 ## Classification comparison
 
+Run `notebooks/04_classification_lr_knn.ipynb` top to bottom from the project root or `notebooks/` after installing `requirements.txt` (in Colab, clone/upload the repository and change to its root).
+It compares LR and k-NN, refits selected models on the full training set, and saves CSV results in `results/`; keep the notebook outputs.
+Regenerate it with `python scripts/build_lr_knn_notebook.py`, then rerun the notebook to restore outputs.
+
 Run `notebooks/03_classification_comparison.ipynb` from top to bottom. It
 compares Random Forest and Gaussian Naive Bayes on the same stratified
 30,000-row training sample with five-fold cross-validation, then evaluates

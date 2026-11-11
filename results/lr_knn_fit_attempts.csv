@@ -1,0 +1,153 @@
+context,model,max_iter,seconds,convergence_warning
+initial/Logistic Regression/k=5/fold=1/params=None,Logistic Regression,100.0,0.017020000144839287,False
+initial/Logistic Regression/k=5/fold=2/params=None,Logistic Regression,100.0,0.013579708058387041,False
+initial/Logistic Regression/k=5/fold=3/params=None,Logistic Regression,100.0,0.01332579180598259,False
+initial/Logistic Regression/k=5/fold=4/params=None,Logistic Regression,100.0,0.015454791951924562,False
+initial/Logistic Regression/k=5/fold=5/params=None,Logistic Regression,100.0,0.01042437506839633,False
+initial/Logistic Regression/k=10/fold=1/params=None,Logistic Regression,100.0,0.02397495787590742,False
+initial/Logistic Regression/k=10/fold=2/params=None,Logistic Regression,100.0,0.02568383328616619,False
+initial/Logistic Regression/k=10/fold=3/params=None,Logistic Regression,100.0,0.018501332961022854,False
+initial/Logistic Regression/k=10/fold=4/params=None,Logistic Regression,100.0,0.020956999622285366,False
+initial/Logistic Regression/k=10/fold=5/params=None,Logistic Regression,100.0,0.0175264161080122,False
+initial/Logistic Regression/k=15/fold=1/params=None,Logistic Regression,100.0,0.028470166958868504,False
+initial/Logistic Regression/k=15/fold=2/params=None,Logistic Regression,100.0,0.031878416892141104,False
+initial/Logistic Regression/k=15/fold=3/params=None,Logistic Regression,100.0,0.028230249881744385,False
+initial/Logistic Regression/k=15/fold=4/params=None,Logistic Regression,100.0,0.030153917148709297,False
+initial/Logistic Regression/k=15/fold=5/params=None,Logistic Regression,100.0,0.032316708005964756,False
+initial/Logistic Regression/k=20/fold=1/params=None,Logistic Regression,100.0,0.051027375273406506,False
+initial/Logistic Regression/k=20/fold=2/params=None,Logistic Regression,100.0,0.052380208391696215,False
+initial/Logistic Regression/k=20/fold=3/params=None,Logistic Regression,100.0,0.04930741712450981,False
+initial/Logistic Regression/k=20/fold=4/params=None,Logistic Regression,100.0,0.052994792349636555,False
+initial/Logistic Regression/k=20/fold=5/params=None,Logistic Regression,100.0,0.046891165897250175,False
+initial/Logistic Regression/k=25/fold=1/params=None,Logistic Regression,100.0,0.07203558273613453,False
+initial/Logistic Regression/k=25/fold=2/params=None,Logistic Regression,100.0,0.07651837496086955,False
+initial/Logistic Regression/k=25/fold=3/params=None,Logistic Regression,100.0,0.07014087494462729,False
+initial/Logistic Regression/k=25/fold=4/params=None,Logistic Regression,100.0,0.08082916680723429,False
+initial/Logistic Regression/k=25/fold=5/params=None,Logistic Regression,100.0,0.05962862493470311,False
+initial/Logistic Regression/k=33/fold=1/params=None,Logistic Regression,100.0,0.0789977079257369,False
+initial/Logistic Regression/k=33/fold=2/params=None,Logistic Regression,100.0,0.1004514591768384,False
+initial/Logistic Regression/k=33/fold=3/params=None,Logistic Regression,100.0,0.09910274995490909,False
+initial/Logistic Regression/k=33/fold=4/params=None,Logistic Regression,100.0,0.09763066610321403,False
+initial/Logistic Regression/k=33/fold=5/params=None,Logistic Regression,100.0,0.09300083387643099,False
+initial/k-NN/k=5/fold=1/params=None,k-NN,,0.0008103749714791775,False
+initial/k-NN/k=5/fold=2/params=None,k-NN,,0.0008486667647957802,False
+initial/k-NN/k=5/fold=3/params=None,k-NN,,0.000820833258330822,False
+initial/k-NN/k=5/fold=4/params=None,k-NN,,0.0008052499033510685,False
+initial/k-NN/k=5/fold=5/params=None,k-NN,,0.000883166678249836,False
+initial/k-NN/k=10/fold=1/params=None,k-NN,,0.0007396247237920761,False
+initial/k-NN/k=10/fold=2/params=None,k-NN,,0.0011767498217523098,False
+initial/k-NN/k=10/fold=3/params=None,k-NN,,0.000992374960333109,False
+initial/k-NN/k=10/fold=4/params=None,k-NN,,0.0007384577766060829,False
+initial/k-NN/k=10/fold=5/params=None,k-NN,,0.0007261252030730247,False
+initial/k-NN/k=15/fold=1/params=None,k-NN,,0.0011638328433036804,False
+initial/k-NN/k=15/fold=2/params=None,k-NN,,0.0007613752968609333,False
+initial/k-NN/k=15/fold=3/params=None,k-NN,,0.0008482080884277821,False
+initial/k-NN/k=15/fold=4/params=None,k-NN,,0.0008085831068456173,False
+initial/k-NN/k=15/fold=5/params=None,k-NN,,0.0007412084378302097,False
+initial/k-NN/k=20/fold=1/params=None,k-NN,,0.0007786671631038189,False
+initial/k-NN/k=20/fold=2/params=None,k-NN,,0.0011761672794818878,False
+initial/k-NN/k=20/fold=3/params=None,k-NN,,0.0009376253001391888,False
+initial/k-NN/k=20/fold=4/params=None,k-NN,,0.0008093342185020447,False
+initial/k-NN/k=20/fold=5/params=None,k-NN,,0.0008180001750588417,False
+initial/k-NN/k=25/fold=1/params=None,k-NN,,0.0008543753065168858,False
+initial/k-NN/k=25/fold=2/params=None,k-NN,,0.0020652920939028263,False
+initial/k-NN/k=25/fold=3/params=None,k-NN,,0.0013069580309092999,False
+initial/k-NN/k=25/fold=4/params=None,k-NN,,0.0008700829930603504,False
+initial/k-NN/k=25/fold=5/params=None,k-NN,,0.0009138337336480618,False
+initial/k-NN/k=33/fold=1/params=None,k-NN,,0.0009601670317351818,False
+initial/k-NN/k=33/fold=2/params=None,k-NN,,0.002452583983540535,False
+initial/k-NN/k=33/fold=3/params=None,k-NN,,0.001418832689523697,False
+initial/k-NN/k=33/fold=4/params=None,k-NN,,0.0014268751256167889,False
+initial/k-NN/k=33/fold=5/params=None,k-NN,,0.0010093748569488525,False
+tuning/Logistic Regression/k=33/fold=1/params={'C': 0.01},Logistic Regression,100.0,0.05965195829048753,False
+tuning/Logistic Regression/k=33/fold=2/params={'C': 0.01},Logistic Regression,100.0,0.04252162482589483,False
+tuning/Logistic Regression/k=33/fold=3/params={'C': 0.01},Logistic Regression,100.0,0.03739129099994898,False
+tuning/Logistic Regression/k=33/fold=4/params={'C': 0.01},Logistic Regression,100.0,0.035457707941532135,False
+tuning/Logistic Regression/k=33/fold=5/params={'C': 0.01},Logistic Regression,100.0,0.03596012480556965,False
+tuning/Logistic Regression/k=33/fold=1/params={'C': 0.1},Logistic Regression,100.0,0.08603341691195965,False
+tuning/Logistic Regression/k=33/fold=2/params={'C': 0.1},Logistic Regression,100.0,0.08302408317103982,False
+tuning/Logistic Regression/k=33/fold=3/params={'C': 0.1},Logistic Regression,100.0,0.08621083293110132,False
+tuning/Logistic Regression/k=33/fold=4/params={'C': 0.1},Logistic Regression,100.0,0.08149675000458956,False
+tuning/Logistic Regression/k=33/fold=5/params={'C': 0.1},Logistic Regression,100.0,0.07881283340975642,False
+tuning/Logistic Regression/k=33/fold=1/params={'C': 1},Logistic Regression,100.0,0.07782916724681854,False
+tuning/Logistic Regression/k=33/fold=2/params={'C': 1},Logistic Regression,100.0,0.08456895826384425,False
+tuning/Logistic Regression/k=33/fold=3/params={'C': 1},Logistic Regression,100.0,0.09566941577941179,False
+tuning/Logistic Regression/k=33/fold=4/params={'C': 1},Logistic Regression,100.0,0.0940377083607018,False
+tuning/Logistic Regression/k=33/fold=5/params={'C': 1},Logistic Regression,100.0,0.09235433302819729,False
+tuning/Logistic Regression/k=33/fold=1/params={'C': 10},Logistic Regression,200.0,0.16279737511649728,False
+tuning/Logistic Regression/k=33/fold=2/params={'C': 10},Logistic Regression,200.0,0.16703550005331635,False
+tuning/Logistic Regression/k=33/fold=3/params={'C': 10},Logistic Regression,200.0,0.14393274998292327,False
+tuning/Logistic Regression/k=33/fold=4/params={'C': 10},Logistic Regression,200.0,0.13191983429715037,False
+tuning/Logistic Regression/k=33/fold=5/params={'C': 10},Logistic Regression,200.0,0.15395666705444455,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 5, 'weights': 'uniform'}",k-NN,,0.0008286247029900551,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 5, 'weights': 'uniform'}",k-NN,,0.0014164997264742851,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 5, 'weights': 'uniform'}",k-NN,,0.0014837919734418392,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 5, 'weights': 'uniform'}",k-NN,,0.0009049167856574059,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 5, 'weights': 'uniform'}",k-NN,,0.0010810834355652332,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 5, 'weights': 'distance'}",k-NN,,0.0012354166246950626,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 5, 'weights': 'distance'}",k-NN,,0.0009044171310961246,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 5, 'weights': 'distance'}",k-NN,,0.0010307501070201397,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 5, 'weights': 'distance'}",k-NN,,0.0010465825907886028,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 5, 'weights': 'distance'}",k-NN,,0.0008809161372482777,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 15, 'weights': 'uniform'}",k-NN,,0.0007787500508129597,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 15, 'weights': 'uniform'}",k-NN,,0.0013040839694440365,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 15, 'weights': 'uniform'}",k-NN,,0.0008193752728402615,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 15, 'weights': 'uniform'}",k-NN,,0.0007815421558916569,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 15, 'weights': 'uniform'}",k-NN,,0.0008059171959757805,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 15, 'weights': 'distance'}",k-NN,,0.000841749832034111,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 15, 'weights': 'distance'}",k-NN,,0.0009968327358365059,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 15, 'weights': 'distance'}",k-NN,,0.0013538328930735588,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 15, 'weights': 'distance'}",k-NN,,0.0007551251910626888,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 15, 'weights': 'distance'}",k-NN,,0.0011562500149011612,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 31, 'weights': 'uniform'}",k-NN,,0.0007813749834895134,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 31, 'weights': 'uniform'}",k-NN,,0.0020642089657485485,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 31, 'weights': 'uniform'}",k-NN,,0.0010010418482124805,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 31, 'weights': 'uniform'}",k-NN,,0.0014767078682780266,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 31, 'weights': 'uniform'}",k-NN,,0.001254958100616932,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 31, 'weights': 'distance'}",k-NN,,0.0007688328623771667,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 31, 'weights': 'distance'}",k-NN,,0.0012648748233914375,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 31, 'weights': 'distance'}",k-NN,,0.001350832637399435,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 31, 'weights': 'distance'}",k-NN,,0.0019078329205513,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 31, 'weights': 'distance'}",k-NN,,0.0007687089964747429,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 51, 'weights': 'uniform'}",k-NN,,0.000803542323410511,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 51, 'weights': 'uniform'}",k-NN,,0.001325999852269888,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 51, 'weights': 'uniform'}",k-NN,,0.0012455829419195652,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 51, 'weights': 'uniform'}",k-NN,,0.005420916713774204,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 51, 'weights': 'uniform'}",k-NN,,0.006310583092272282,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 51, 'weights': 'distance'}",k-NN,,0.0008933329954743385,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 51, 'weights': 'distance'}",k-NN,,0.0011882917024195194,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 51, 'weights': 'distance'}",k-NN,,0.0012546251527965069,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 51, 'weights': 'distance'}",k-NN,,0.000761709176003933,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 51, 'weights': 'distance'}",k-NN,,0.0008304170332849026,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 71, 'weights': 'uniform'}",k-NN,,0.0007775411941111088,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 71, 'weights': 'uniform'}",k-NN,,0.0012097912840545177,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 71, 'weights': 'uniform'}",k-NN,,0.0007473747245967388,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 71, 'weights': 'uniform'}",k-NN,,0.000936542171984911,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 71, 'weights': 'uniform'}",k-NN,,0.0008010407909750938,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 71, 'weights': 'distance'}",k-NN,,0.0007921671494841576,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 71, 'weights': 'distance'}",k-NN,,0.0007653748616576195,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 71, 'weights': 'distance'}",k-NN,,0.0008361251093447208,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 71, 'weights': 'distance'}",k-NN,,0.0012541660107672215,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 71, 'weights': 'distance'}",k-NN,,0.0008646249771118164,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 101, 'weights': 'uniform'}",k-NN,,0.0009330827742815018,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 101, 'weights': 'uniform'}",k-NN,,0.0011612079106271267,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 101, 'weights': 'uniform'}",k-NN,,0.0007773749530315399,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 101, 'weights': 'uniform'}",k-NN,,0.0007390840910375118,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 101, 'weights': 'uniform'}",k-NN,,0.0007709581404924393,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 101, 'weights': 'distance'}",k-NN,,0.0008895001374185085,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 101, 'weights': 'distance'}",k-NN,,0.0011372501030564308,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 101, 'weights': 'distance'}",k-NN,,0.0007571671158075333,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 101, 'weights': 'distance'}",k-NN,,0.0007807500660419464,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 101, 'weights': 'distance'}",k-NN,,0.0009552501142024994,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 151, 'weights': 'uniform'}",k-NN,,0.000764958094805479,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 151, 'weights': 'uniform'}",k-NN,,0.001062583178281784,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 151, 'weights': 'uniform'}",k-NN,,0.0009049586951732635,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 151, 'weights': 'uniform'}",k-NN,,0.004761874675750732,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 151, 'weights': 'uniform'}",k-NN,,0.000805707648396492,False
+"tuning/k-NN/k=15/fold=1/params={'n_neighbors': 151, 'weights': 'distance'}",k-NN,,0.0007802923209965229,False
+"tuning/k-NN/k=15/fold=2/params={'n_neighbors': 151, 'weights': 'distance'}",k-NN,,0.0007744170725345612,False
+"tuning/k-NN/k=15/fold=3/params={'n_neighbors': 151, 'weights': 'distance'}",k-NN,,0.000792959239333868,False
+"tuning/k-NN/k=15/fold=4/params={'n_neighbors': 151, 'weights': 'distance'}",k-NN,,0.0007713749073445797,False
+"tuning/k-NN/k=15/fold=5/params={'n_neighbors': 151, 'weights': 'distance'}",k-NN,,0.0007543750107288361,False
+final/Logistic Regression,Logistic Regression,100.0,0.6125341658480465,False
+final/k-NN,k-NN,,0.0040853749960660934,False
