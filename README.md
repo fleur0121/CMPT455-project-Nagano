@@ -20,7 +20,7 @@ compares Random Forest and Gaussian Naive Bayes on the same stratified
 30,000-row training sample with five-fold cross-validation, then evaluates
 the selected settings once on the held-out test set. Keep the saved outputs.
 
-`notebooks/03_classification_comparison_ja.ipynb` is a Japanese study copy.
-The English notebook is the project copy. To regenerate both notebooks, run
+The English notebook is the project copy. Regenerate it with
 `python scripts/build_classification_notebook.py` from the project root, then
-run the notebooks again to restore their outputs.
+rerun it to restore outputs. The optional Japanese study copy is generated only
+when `scripts/classification_notebook_ja.json` is present.

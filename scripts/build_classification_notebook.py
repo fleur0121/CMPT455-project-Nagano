@@ -31,12 +31,11 @@ def code(source: str) -> dict:
 
 cells = [
     markdown(r"""
-# Random Forest and Gaussian Naive Bayes comparison
+# RF and GaussianNB comparison
 
-The data is split into training and test sets using stratification. Both models
-use the same five folds from a 30,000-row training sample. Feature ranking and
-preprocessing are fitted within each fold. AP is the main metric; the notebook
-also reports ROC-AUC, accuracy, precision, recall, F1, and runtime.
+Use a stratified 30,000-row sample from the training split for 5-fold cross-validation and parameter selection. Keep the selected feature count and best parameters, then refit each final model on all 172,459 training rows. For k < 33, rank features by mutual information on all training rows. Evaluate the 43,115-row held-out test set once per model.
+
+Average precision (AP) is the main metric. ROC-AUC, accuracy, precision, recall, F1, and processing times are also recorded. Test results are exploratory and are not used to change settings.
 """),
     markdown("## 1. Imports, data, and shared split"),
     code(r"""
@@ -107,8 +106,7 @@ print(f"CV folds: {len(folds)}; feature counts: {FEATURE_COUNTS}")
     markdown(r"""
 ## 2. MI ranking within each training fold
 
-MI ranks the original features using only the training part of each fold. The
-validation rows are not used to select features.
+MI ranks the original features using only the training part of each fold. The validation rows are not used to select features.
 """),
     code(r"""
 def rank_features_by_mi(X_fit, y_fit):
@@ -139,7 +137,7 @@ def rank_features_by_mi(X_fit, y_fit):
         .reset_index(drop=True)
     )
 
-# Small preview to confirm ranking code; the actual CV ranks each fold.
+# Small preview; the actual CV ranks features within each fold.
 display(rank_features_by_mi(X_dev.iloc[:1_000], y_dev.iloc[:1_000]).head(10))
 """),
     markdown("## 3. Evaluation functions and initial model comparison"),
@@ -241,10 +239,7 @@ display(summary.round(4))
 fig, axes = plt.subplots(1, 3, figsize=(16, 4.5))
 for model_name, group in summary.groupby("model"):
     group = group.sort_values("k")
-    axes[0].errorbar(
-        group["k"], group["AP_mean"], yerr=group["AP_sd"],
-        marker="o", capsize=3, label=model_name,
-    )
+    axes[0].errorbar(group["k"], group["AP_mean"], yerr=group["AP_sd"], marker="o", capsize=3, label=model_name)
     axes[1].plot(group["k"], group["fit_seconds_mean"], marker="o", label=model_name)
     axes[2].plot(group["k"], group["predict_seconds_mean"], marker="o", label=model_name)
 axes[0].set(title="AP by feature count", xlabel="features kept", ylabel="mean AP ± SD")
@@ -259,8 +254,7 @@ plt.show()
     markdown(r"""
 ## 5. Hyperparameter search
 
-The parameter search compares a small set of settings on the same folds. The
-table below shows the tested settings and scores.
+The parameter search compares a small set of settings on the same folds. The table below shows the tested settings and scores.
 """),
     code(r"""
 chosen_k = (
@@ -307,41 +301,45 @@ display(best_tuning[["model", "k", "params", "AP_mean", "AP_sd"]])
     markdown(r"""
 ## 6. One-time held-out test evaluation
 
-After selecting the settings, each model is refit on the 30,000-row sample and
-evaluated once on the held-out test set. The test results are not used to
-change the settings. The confusion matrices use a 0.5 threshold.
+After selecting the settings, each model is refit on all 172,459 training rows and evaluated once on the 43,115-row held-out test set. For k < 33, MI ranking uses all training rows. The test results are not used to change the settings. The confusion matrices use a 0.5 threshold.
 """),
     code(r"""
 final_rows = []
 final_predictions = {}
 final_models = {}
+final_fit_rows = {}
+
+assert len(X_train) == 172_459
+assert len(X_test) == 43_115
 
 for _, choice in best_tuning.iterrows():
     model_name = choice["model"]
     k = int(choice["k"])
     params = choice["params"]
 
-    # Rank once on all development rows, which are still training-side data.
-    if k == X_dev.shape[1]:
-        selected = list(X_dev.columns)
+    # Reuse CV-selected k and parameters. Rank on all training rows for k < 33.
+    if k == X_train.shape[1]:
+        selected = list(X_train.columns)
     else:
-        selected = rank_features_by_mi(X_dev, y_dev)["feature"].head(k).tolist()
+        selected = rank_features_by_mi(X_train, y_train)["feature"].head(k).tolist()
 
-    X_dev_k, X_test_k = X_dev[selected], X_test[selected]
-    preprocessor = build_preprocessor(X_dev_k, log_money=False)
-    Z_dev = preprocessor.fit_transform(X_dev_k)
+    X_train_k, X_test_k = X_train[selected], X_test[selected]
+    preprocessor = build_preprocessor(X_train_k, log_money=False)
+    Z_train = preprocessor.fit_transform(X_train_k)
     Z_test = preprocessor.transform(X_test_k)
-    if model_name == "GaussianNB" and hasattr(Z_dev, "toarray"):
-        Z_dev, Z_test = Z_dev.toarray(), Z_test.toarray()
+    if model_name == "GaussianNB" and hasattr(Z_train, "toarray"):
+        Z_train, Z_test = Z_train.toarray(), Z_test.toarray()
 
     model = make_model(model_name, params)
-    model.fit(Z_dev, y_dev)
+    model.fit(Z_train, y_train)
     probability = model.predict_proba(Z_test)[:, 1]
     predicted = (probability >= 0.5).astype(int)
     final_models[model_name] = (model, preprocessor, selected)
     final_predictions[model_name] = (probability, predicted)
+    final_fit_rows[model_name] = len(X_train)
     final_rows.append({
         "model": model_name, "k": k, "params": params,
+        "training_rows": len(X_train), "test_rows": len(X_test),
         "AP": average_precision_score(y_test, probability),
         "ROC_AUC": roc_auc_score(y_test, probability),
         "Accuracy": accuracy_score(y_test, predicted),
@@ -364,9 +362,7 @@ for row, model_name in enumerate(["Random Forest", "GaussianNB"]):
         cmap="Blues", values_format="d", ax=axes[row, 0],
     )
     axes[row, 0].set_title(f"{model_name}: held-out confusion matrix (threshold=0.5)")
-    RocCurveDisplay.from_predictions(
-        y_test, probability, name=model_name, ax=axes[row, 1]
-    )
+    RocCurveDisplay.from_predictions(y_test, probability, name=model_name, ax=axes[row, 1])
     axes[row, 1].plot([0, 1], [0, 1], linestyle="--", color="grey", linewidth=1)
     axes[row, 1].set_title(f"{model_name}: held-out ROC curve")
     axes[row, 1].set_xlabel("False Positive Rate")
@@ -378,13 +374,24 @@ plt.show()
 ## 8. Final checks
 """),
     code(r"""
-assert len(X_dev) == 30_000
+assert len(X_train) == 172_459
+assert len(X_test) == 43_115
 assert X.shape[1] == 33
+assert len(X_dev) == 30_000
 assert len(folds) == 5
+assert len(fold_results) == 60
+assert fold_results.groupby(["model", "k"]).size().eq(5).all()
+assert len(tuning_summary) == 12
 assert set(test_summary["model"]) == {"Random Forest", "GaussianNB"}
+assert test_summary["training_rows"].eq(172_459).all()
+assert test_summary["test_rows"].eq(43_115).all()
+assert final_fit_rows == {"Random Forest": 172_459, "GaussianNB": 172_459}
+assert all(len(final_predictions[name][0]) == 43_115 for name in final_predictions)
 print("Final checks passed.")
 print(f"CV result rows: {len(fold_results):,} (expected 60)")
-print(f"Tuning configurations: {len(tuning_summary):,}")
+print(f"Tuning configurations: {len(tuning_summary):,} (expected 12)")
+print(f"Final fit rows per model: {final_fit_rows}")
+print(f"Held-out test rows per model: {len(X_test):,}")
 """),
     markdown(""),
 ]
@@ -406,39 +413,42 @@ for index, cell in enumerate(notebook["cells"], start=1):
     cell["id"] = f"classification-{index:02d}"
 
 translation_path = Path(__file__).with_name("classification_notebook_ja.json")
-translations = json.loads(translation_path.read_text())
-japanese_notebook = deepcopy(notebook)
-
-for index, source in translations["markdown"].items():
-    japanese_notebook["cells"][int(index)]["source"] = source.splitlines(keepends=True)
-
-for cell in japanese_notebook["cells"]:
-    if cell["cell_type"] != "code":
-        continue
-    source = "".join(cell["source"])
-    for old, new_text in translations["code_replacements"].items():
-        source = source.replace(old, new_text)
-    cell["source"] = source.splitlines(keepends=True)
-
-imports_cell = japanese_notebook["cells"][2]
-source = "".join(imports_cell["source"])
-source = source.replace(
-    "import matplotlib.pyplot as plt\n",
-    "import matplotlib.pyplot as plt\nfrom matplotlib import font_manager\n",
-)
-source = source.replace(
-    'get_ipython().run_line_magic("matplotlib", "inline")\n',
-    'get_ipython().run_line_magic("matplotlib", "inline")\n'
-    + translations["japanese_font_setup"],
-)
-imports_cell["source"] = source.splitlines(keepends=True)
-
 output_dir = Path(__file__).resolve().parents[1] / "notebooks"
 output_dir.mkdir(parents=True, exist_ok=True)
 outputs = [
     (output_dir / "03_classification_comparison.ipynb", notebook),
-    (output_dir / "03_classification_comparison_ja.ipynb", japanese_notebook),
 ]
+if translation_path.exists():
+    translations = json.loads(translation_path.read_text())
+    japanese_notebook = deepcopy(notebook)
+
+    for index, source in translations["markdown"].items():
+        japanese_notebook["cells"][int(index)]["source"] = source.splitlines(keepends=True)
+
+    for cell in japanese_notebook["cells"]:
+        if cell["cell_type"] != "code":
+            continue
+        source = "".join(cell["source"])
+        for old, new_text in translations["code_replacements"].items():
+            source = source.replace(old, new_text)
+        cell["source"] = source.splitlines(keepends=True)
+
+    imports_cell = japanese_notebook["cells"][2]
+    source = "".join(imports_cell["source"])
+    source = source.replace(
+        "import matplotlib.pyplot as plt\n",
+        "import matplotlib.pyplot as plt\nfrom matplotlib import font_manager\n",
+    )
+    source = source.replace(
+        'get_ipython().run_line_magic("matplotlib", "inline")\n',
+        'get_ipython().run_line_magic("matplotlib", "inline")\n'
+        + translations["japanese_font_setup"],
+    )
+    imports_cell["source"] = source.splitlines(keepends=True)
+    outputs.append((output_dir / "03_classification_comparison_ja.ipynb", japanese_notebook))
+else:
+    print("Translation file not found; building the English notebook only.")
+
 for output_path, content in outputs:
     output_path.write_text(json.dumps(content, ensure_ascii=False, indent=2) + "\n")
     print(f"Built {output_path}")
