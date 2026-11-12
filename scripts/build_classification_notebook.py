@@ -97,7 +97,7 @@ folds = list(StratifiedKFold(
     n_splits=5, shuffle=True, random_state=42
 ).split(X_dev, y_dev))
 
-FEATURE_COUNTS = [5, 10, 15, 20, 25, 33]
+FEATURE_COUNTS = [5, 10, 15, 17, 20, 25, 33]
 print(f"Original features: {X.shape[1]}")
 print(f"Training rows: {len(X_train):,}; held-out test rows: {len(X_test):,}")
 print(f"CV sample rows: {len(X_dev):,}; positive rate: {y_dev.mean():.4f}")
@@ -379,7 +379,7 @@ assert len(X_test) == 43_115
 assert X.shape[1] == 33
 assert len(X_dev) == 30_000
 assert len(folds) == 5
-assert len(fold_results) == 60
+assert len(fold_results) == 70
 assert fold_results.groupby(["model", "k"]).size().eq(5).all()
 assert len(tuning_summary) == 12
 assert set(test_summary["model"]) == {"Random Forest", "GaussianNB"}
@@ -388,7 +388,7 @@ assert test_summary["test_rows"].eq(43_115).all()
 assert final_fit_rows == {"Random Forest": 172_459, "GaussianNB": 172_459}
 assert all(len(final_predictions[name][0]) == 43_115 for name in final_predictions)
 print("Final checks passed.")
-print(f"CV result rows: {len(fold_results):,} (expected 60)")
+print(f"CV result rows: {len(fold_results):,} (expected 70)")
 print(f"Tuning configurations: {len(tuning_summary):,} (expected 12)")
 print(f"Final fit rows per model: {final_fit_rows}")
 print(f"Held-out test rows per model: {len(X_test):,}")

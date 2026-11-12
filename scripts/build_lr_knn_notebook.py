@@ -85,7 +85,7 @@ X_dev, _, y_dev, _ = train_test_split(
 folds = list(StratifiedKFold(
     n_splits=5, shuffle=True, random_state=42
 ).split(X_dev, y_dev))
-FEATURE_COUNTS = [5, 10, 15, 20, 25, 33]
+FEATURE_COUNTS = [5, 10, 15, 17, 20, 25, 33]
 MODEL_NAMES = ["Logistic Regression", "k-NN"]
 print(f"Python {platform.python_version()}; sklearn {sklearn.__version__}; pandas {pd.__version__}")
 print(f"Original features: {X.shape[1]}")
@@ -415,7 +415,7 @@ for model_name in MODEL_NAMES:
 assert len(X_dev) == 30_000
 assert X.shape[1] == 33
 assert len(folds) == 5
-assert len(fold_results) == 60
+assert len(fold_results) == 70
 assert fold_results.groupby(["model", "k"]).size().eq(5).all()
 assert fold_results.loc[fold_results["k"] == 33, "MI_seconds"].eq(0).all()
 assert len(tuning_summary) == 18
