@@ -24,3 +24,11 @@ The English notebook is the project copy. Regenerate it with
 `python scripts/build_classification_notebook.py` from the project root, then
 rerun it to restore outputs. The optional Japanese study copy is generated only
 when `scripts/classification_notebook_ja.json` is present.
+
+## Clustering and outlier removal
+
+Run `notebooks/05_kmeans.ipynb` top to bottom from the repository root or `notebooks/` after installing `requirements.txt`; in Colab, clone/upload the repository and change to its root.
+Regenerate it with `python scripts/build_kmeans_notebook.py`; outputs are saved as `results/kmeans_*.csv`. `COMMON_K` is initially undecided.
+
+Run `notebooks/06_lof_outliers.ipynb` top to bottom in the same environment, retaining the existing classification CSVs for reference checks.
+Regenerate it with `python scripts/build_lof_notebook.py`; outputs are saved as `results/lof_*.csv`. Both notebooks require `src/unsupervised_common.py` and retain their executed outputs.
