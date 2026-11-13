@@ -123,9 +123,13 @@ def plot_clusters(k, title):
 silhouette_k = int(best_k.loc[best_k.metric == "Silhouette", "k"].iloc[0])
 plot_clusters(silhouette_k, f"K-Means: k={silhouette_k}; PCA visualization only")
 '''),
-    markdown("## 6. Optional common k for comparison with Ward linkage"),
+    markdown("""
+## 6. Optional common k for comparison with Ward linkage
+
+The common k was set to 4 by the agreed rule in notebook 07.
+"""),
     code(r'''
-COMMON_K = None
+COMMON_K = 4
 if COMMON_K is None:
     print("Common k is not yet decided.")
 else:

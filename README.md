@@ -29,6 +29,7 @@ when `scripts/classification_notebook_ja.json` is present.
 
 Run `notebooks/05_kmeans.ipynb` first from the repository root or `notebooks/` after installing `requirements.txt`; in Colab, clone/upload the repository and change to its root.
 Regenerate it with `python scripts/build_kmeans_notebook.py`; outputs are saved as `results/kmeans_*.csv`.
+`COMMON_K` is 4, selected by the agreed rule in notebook 07; run notebook 05 before notebook 07.
 
 Then run `notebooks/07_ward_clustering.ipynb` to fit Ward hierarchical clustering on the same 10,000 training-only sample and compare its scores with the saved K-Means results. It reports the best k for each method and metric, applies the pre-set common-k rule, and compares post-clustering income profiles at that shared k. The Ward notebook is generated with `python scripts/build_ward_notebook.py`; its outputs are saved as `results/ward_*.csv` and `results/clustering_*.csv`.
 

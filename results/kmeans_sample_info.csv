@@ -1,2 +1,2 @@
 dev_rows,cluster_rows,original_features,encoded_features,dev_high_income_rate,sample_high_income_rate,rate_tolerance,preprocessing_seconds
-30000,10000,33,436,0.08613333333333334,0.0861,0.0001,0.04881929187104106
+30000,10000,33,436,0.08613333333333334,0.0861,0.0001,0.04665062529966235
