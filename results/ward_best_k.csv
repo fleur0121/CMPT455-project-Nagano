@@ -1,0 +1,4 @@
+metric,direction,k,value
+Silhouette,max,6,0.17628870045222148
+Calinski_Harabasz,max,2,1663.0296139037837
+Davies_Bouldin,min,6,1.3434925944375227

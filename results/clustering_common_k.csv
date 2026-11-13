@@ -1,0 +1,2 @@
+common_k,selection_rule,kmeans_silhouette_rank,ward_silhouette_rank
+4,smallest k ranked in the top three by Silhouette for both methods,2,3
