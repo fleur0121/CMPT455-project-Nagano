@@ -34,3 +34,5 @@ Then run `notebooks/07_ward_clustering.ipynb` to fit Ward hierarchical clusterin
 
 Run `notebooks/06_lof_outliers.ipynb` top to bottom in the same environment, retaining the existing classification CSVs for reference checks.
 Regenerate it with `python scripts/build_lof_notebook.py`; outputs are saved as `results/lof_*.csv`. Both notebooks require `src/unsupervised_common.py` and retain their executed outputs.
+
+Run `notebooks/08_isolation_forest_outliers.ipynb` after notebook 06. It applies Isolation Forest at 1% and 5% contamination using the same folds and four fixed classifiers, then combines its fold results with LOF in `results/outlier_*.csv`. Regenerate it with `python scripts/build_iforest_notebook.py`.
