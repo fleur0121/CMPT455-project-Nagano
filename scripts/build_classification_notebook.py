@@ -42,10 +42,13 @@ Average precision (AP) is the main metric. ROC-AUC, accuracy, precision, recall,
 from pathlib import Path
 import sys
 import time
+import platform
 
+experiment_started = time.perf_counter()
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import sklearn
 from IPython.display import display
 get_ipython().run_line_magic("matplotlib", "inline")
 from sklearn.ensemble import RandomForestClassifier
@@ -69,6 +72,9 @@ from sklearn.model_selection import (
 )
 from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import OrdinalEncoder
+from threadpoolctl import threadpool_limits
+
+thread_limit = threadpool_limits(limits=1)
 
 cwd = Path.cwd()
 repo_root = cwd if (cwd / "src" / "preprocessing.py").exists() else cwd.parent
@@ -98,6 +104,7 @@ folds = list(StratifiedKFold(
 ).split(X_dev, y_dev))
 
 FEATURE_COUNTS = [5, 10, 15, 17, 20, 25, 33]
+print(f"Python {platform.python_version()}; sklearn {sklearn.__version__}; pandas {pd.__version__}; numpy {np.__version__}")
 print(f"Original features: {X.shape[1]}")
 print(f"Training rows: {len(X_train):,}; held-out test rows: {len(X_test):,}")
 print(f"CV sample rows: {len(X_dev):,}; positive rate: {y_dev.mean():.4f}")
@@ -287,6 +294,7 @@ for model_name, grid in parameter_grids.items():
             "ROC_AUC_mean": scores["ROC_AUC"].mean(),
             "F1_mean": scores["F1"].mean(),
             "fit_seconds_mean": scores["fit_seconds"].mean(),
+            "predict_seconds_mean": scores["predict_seconds"].mean(),
         })
 
 tuning_summary = pd.DataFrame(tuning_rows)
@@ -318,21 +326,30 @@ for _, choice in best_tuning.iterrows():
     params = choice["params"]
 
     # Reuse CV-selected k and parameters. Rank on all training rows for k < 33.
+    mi_seconds = 0.0
     if k == X_train.shape[1]:
         selected = list(X_train.columns)
     else:
+        started = time.perf_counter()
         selected = rank_features_by_mi(X_train, y_train)["feature"].head(k).tolist()
+        mi_seconds = time.perf_counter() - started
 
     X_train_k, X_test_k = X_train[selected], X_test[selected]
     preprocessor = build_preprocessor(X_train_k, log_money=False)
+    started = time.perf_counter()
     Z_train = preprocessor.fit_transform(X_train_k)
     Z_test = preprocessor.transform(X_test_k)
     if model_name == "GaussianNB" and hasattr(Z_train, "toarray"):
         Z_train, Z_test = Z_train.toarray(), Z_test.toarray()
+    preprocessing_seconds = time.perf_counter() - started
 
     model = make_model(model_name, params)
+    started = time.perf_counter()
     model.fit(Z_train, y_train)
+    fit_seconds = time.perf_counter() - started
+    started = time.perf_counter()
     probability = model.predict_proba(Z_test)[:, 1]
+    predict_seconds = time.perf_counter() - started
     predicted = (probability >= 0.5).astype(int)
     final_models[model_name] = (model, preprocessor, selected)
     final_predictions[model_name] = (probability, predicted)
@@ -340,6 +357,10 @@ for _, choice in best_tuning.iterrows():
     final_rows.append({
         "model": model_name, "k": k, "params": params,
         "training_rows": len(X_train), "test_rows": len(X_test),
+        "MI_seconds": mi_seconds,
+        "preprocessing_seconds": preprocessing_seconds,
+        "fit_seconds": fit_seconds,
+        "predict_seconds": predict_seconds,
         "AP": average_precision_score(y_test, probability),
         "ROC_AUC": roc_auc_score(y_test, probability),
         "Accuracy": accuracy_score(y_test, predicted),
@@ -392,6 +413,8 @@ print(f"CV result rows: {len(fold_results):,} (expected 70)")
 print(f"Tuning configurations: {len(tuning_summary):,} (expected 12)")
 print(f"Final fit rows per model: {final_fit_rows}")
 print(f"Held-out test rows per model: {len(X_test):,}")
+total_seconds = time.perf_counter() - experiment_started
+print(f"Total execution time: {total_seconds:.2f} seconds")
 """),
     markdown(""),
 ]

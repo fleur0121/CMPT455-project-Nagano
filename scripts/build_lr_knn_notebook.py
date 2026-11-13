@@ -127,11 +127,10 @@ def rank_features_by_mi(X_fit, y_fit):
 ## 3. Evaluation functions and initial model comparison
 
 Models use sklearn defaults, with `random_state=42` for LR and `n_jobs=1` for k-NN.
-Native thread pools are limited to one thread. LR uses `max_iter=100`, except
-for `C=10`: the previous run required `max_iter=200` in all five folds, so this
-setting starts at 200. This preserves the previous effective iteration limits.
-Unexpected convergence failures trigger a fresh fit with twice the iteration
-limit, up to 25,600. Attempts are recorded; fit time includes any retries.
+Native thread pools are limited to one thread. LR uses `max_iter=100`.
+For `C=10`, fitting starts at `max_iter=200` because 100 did not converge
+in the earlier k=33 run. If convergence fails, the iteration limit is doubled
+and the model is refit, up to 25,600. Attempts are recorded; fit time includes retries.
 No test scores control iteration limits.
 Prediction time measures `predict_proba`; preprocessing time includes both transforms.
 """),
