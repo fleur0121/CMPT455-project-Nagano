@@ -1,0 +1,3 @@
+source,models,decimal_places,rounding_evidence,source_cell_index
+03 saved HTML,Random Forest; GaussianNB,4,summary.round(4); HTML fractional values have four digits,6.0
+lr_knn_cv_summary.csv,Logistic Regression; k-NN,stored CSV precision,No additional rounding before aggregation,

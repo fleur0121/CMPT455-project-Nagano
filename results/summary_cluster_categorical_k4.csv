@@ -1,0 +1,89 @@
+method,k,cluster,feature,mode,mode_count,mode_fraction
+K-Means,4,0,detailed_occupation_recode,2,572,0.09384741591468417
+K-Means,4,0,major_occupation_code,Professional specialty,938,0.1538966365873667
+K-Means,4,0,education,High school graduate,1905,0.3125512715340443
+K-Means,4,0,detailed_industry_recode,33,942,0.15455291222313372
+K-Means,4,0,major_industry_code,Retail trade,942,0.15455291222313372
+K-Means,4,0,class_of_worker,Private,4174,0.6848236259228876
+K-Means,4,0,sex,Male,3244,0.5322395406070549
+K-Means,4,0,tax_filer_stat,Joint both under 65,3462,0.5680065627563576
+K-Means,4,0,detailed_household_and_family_stat,Householder,2484,0.4075471698113208
+K-Means,4,0,detailed_household_summary_in_household,Householder,3278,0.5378178835110746
+K-Means,4,0,marital_stat,Married-civilian spouse present,3653,0.599343724364233
+K-Means,4,1,detailed_occupation_recode,26,94,0.13722627737226278
+K-Means,4,1,major_occupation_code,Adm support including clerical,145,0.2116788321167883
+K-Means,4,1,education,High school graduate,291,0.4248175182481752
+K-Means,4,1,detailed_industry_recode,33,114,0.16642335766423358
+K-Means,4,1,major_industry_code,Retail trade,114,0.16642335766423358
+K-Means,4,1,class_of_worker,Private,568,0.8291970802919708
+K-Means,4,1,sex,Female,363,0.5299270072992701
+K-Means,4,1,tax_filer_stat,Joint both under 65,352,0.5138686131386861
+K-Means,4,1,detailed_household_and_family_stat,Householder,239,0.34890510948905107
+K-Means,4,1,detailed_household_summary_in_household,Householder,331,0.4832116788321168
+K-Means,4,1,marital_stat,Married-civilian spouse present,362,0.5284671532846715
+K-Means,4,2,detailed_occupation_recode,0,3120,0.9753047827446076
+K-Means,4,2,major_occupation_code,Not in universe,3120,0.9753047827446076
+K-Means,4,2,education,High school graduate,1100,0.34385745545482965
+K-Means,4,2,detailed_industry_recode,0,3120,0.9753047827446076
+K-Means,4,2,major_industry_code,Not in universe or children,3120,0.9753047827446076
+K-Means,4,2,class_of_worker,Not in universe,3109,0.9718662081900594
+K-Means,4,2,sex,Female,2105,0.658018130665833
+K-Means,4,2,tax_filer_stat,Nonfiler,1301,0.4066895904970303
+K-Means,4,2,detailed_household_and_family_stat,Spouse of householder,995,0.3110346983432323
+K-Means,4,2,detailed_household_summary_in_household,Householder,1678,0.5245389184120037
+K-Means,4,2,marital_stat,Married-civilian spouse present,1703,0.5323538605814317
+K-Means,4,3,detailed_occupation_recode,2,6,0.2857142857142857
+K-Means,4,3,major_occupation_code,Professional specialty,9,0.42857142857142855
+K-Means,4,3,education,Prof school degree (MD DDS DVM LLB JD),6,0.2857142857142857
+K-Means,4,3,detailed_industry_recode,42,4,0.19047619047619047
+K-Means,4,3,major_industry_code,Medical except hospital,4,0.19047619047619047
+K-Means,4,3,class_of_worker,Private,12,0.5714285714285714
+K-Means,4,3,sex,Male,17,0.8095238095238095
+K-Means,4,3,tax_filer_stat,Joint both under 65,17,0.8095238095238095
+K-Means,4,3,detailed_household_and_family_stat,Householder,19,0.9047619047619048
+K-Means,4,3,detailed_household_summary_in_household,Householder,21,1.0
+K-Means,4,3,marital_stat,Married-civilian spouse present,18,0.8571428571428571
+Ward,4,0,detailed_occupation_recode,2,554,0.09016927083333333
+Ward,4,0,major_occupation_code,Professional specialty,935,0.15218098958333334
+Ward,4,0,education,High school graduate,2007,0.32666015625
+Ward,4,0,detailed_industry_recode,33,969,0.15771484375
+Ward,4,0,major_industry_code,Retail trade,969,0.15771484375
+Ward,4,0,class_of_worker,Private,4402,0.7164713541666666
+Ward,4,0,sex,Male,3205,0.5216471354166666
+Ward,4,0,tax_filer_stat,Joint both under 65,3486,0.5673828125
+Ward,4,0,detailed_household_and_family_stat,Householder,2437,0.3966471354166667
+Ward,4,0,detailed_household_summary_in_household,Householder,3244,0.5279947916666666
+Ward,4,0,marital_stat,Married-civilian spouse present,3671,0.5974934895833334
+Ward,4,1,detailed_occupation_recode,0,3269,0.9149174363280157
+Ward,4,1,major_occupation_code,Not in universe,3269,0.9149174363280157
+Ward,4,1,education,High school graduate,1219,0.3411698852504898
+Ward,4,1,detailed_industry_recode,0,3269,0.9149174363280157
+Ward,4,1,major_industry_code,Not in universe or children,3269,0.9149174363280157
+Ward,4,1,class_of_worker,Not in universe,3257,0.9115589140778058
+Ward,4,1,sex,Female,2305,0.6451161488944864
+Ward,4,1,tax_filer_stat,Nonfiler,1399,0.3915477190036384
+Ward,4,1,detailed_household_and_family_stat,Householder,1102,0.3084242933109432
+Ward,4,1,detailed_household_summary_in_household,Householder,1818,0.5088161209068011
+Ward,4,1,marital_stat,Married-civilian spouse present,1889,0.5286873775538763
+Ward,4,2,detailed_occupation_recode,0,33,0.12595419847328243
+Ward,4,2,major_occupation_code,Executive admin and managerial,46,0.17557251908396945
+Ward,4,2,education,High school graduate,70,0.26717557251908397
+Ward,4,2,detailed_industry_recode,0,33,0.12595419847328243
+Ward,4,2,major_industry_code,Not in universe or children,33,0.12595419847328243
+Ward,4,2,class_of_worker,Private,154,0.5877862595419847
+Ward,4,2,sex,Male,187,0.7137404580152672
+Ward,4,2,tax_filer_stat,Joint both under 65,138,0.5267175572519084
+Ward,4,2,detailed_household_and_family_stat,Householder,170,0.648854961832061
+Ward,4,2,detailed_household_summary_in_household,Householder,225,0.8587786259541985
+Ward,4,2,marital_stat,Married-civilian spouse present,158,0.6030534351145038
+Ward,4,3,detailed_occupation_recode,2,6,0.2857142857142857
+Ward,4,3,major_occupation_code,Professional specialty,9,0.42857142857142855
+Ward,4,3,education,Prof school degree (MD DDS DVM LLB JD),6,0.2857142857142857
+Ward,4,3,detailed_industry_recode,42,4,0.19047619047619047
+Ward,4,3,major_industry_code,Medical except hospital,4,0.19047619047619047
+Ward,4,3,class_of_worker,Private,12,0.5714285714285714
+Ward,4,3,sex,Male,17,0.8095238095238095
+Ward,4,3,tax_filer_stat,Joint both under 65,17,0.8095238095238095
+Ward,4,3,detailed_household_and_family_stat,Householder,19,0.9047619047619048
+Ward,4,3,detailed_household_summary_in_household,Householder,21,1.0
+Ward,4,3,marital_stat,Married-civilian spouse present,18,0.8571428571428571

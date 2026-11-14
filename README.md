@@ -37,3 +37,15 @@ Run `notebooks/06_lof_outliers.ipynb` top to bottom in the same environment, ret
 Regenerate it with `python scripts/build_lof_notebook.py`; outputs are saved as `results/lof_*.csv`. Both notebooks require `src/unsupervised_common.py` and retain their executed outputs.
 
 Run `notebooks/08_isolation_forest_outliers.ipynb` after notebook 06. It applies Isolation Forest at 1% and 5% contamination using the same folds and four fixed classifiers, then combines its fold results with LOF in `results/outlier_*.csv`. Regenerate it with `python scripts/build_iforest_notebook.py`.
+
+## Summary analysis
+
+Run notebooks 03–08 first, then run `notebooks/09_summary_analysis.ipynb` top to bottom from the repository root or `notebooks/`.
+Install `lxml` in addition to `requirements.txt`; regenerate 09 with `python scripts/build_summary_notebook.py`.
+It reads saved results and the shared training sample without fitting models, and saves tables as `results/summary_*.csv`.
+
+## Training size and feature selection
+
+Run `notebooks/10_training_size_feature_selection.ipynb` top to bottom from the repository root or `notebooks/` after installing `requirements.txt`.
+Regenerate it with `python scripts/build_training_size_notebook.py`; results and checkpoints are saved as `results/trainsize_*.csv`.
+Allow roughly 20–40 minutes for all 120 single-threaded runs on this machine; the fixed 20,000-row validation set comes only from the original training split.
